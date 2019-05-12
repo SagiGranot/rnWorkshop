@@ -11,7 +11,7 @@ export default class LinksScreen extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      myText: 'I\'m ready to get swiped!',
+      myText: '{ Swipe in any direction to change my color}',
       gestureName: 'none',
       backgroundColor: '#fff'
     }
@@ -56,7 +56,7 @@ export default class LinksScreen extends React.Component {
     const config = {
       velocityThreshold: 0.3,
       directionalOffsetThreshold: 80
-    };
+    }
     return (
       <View style={styles.container}>
         <View style={styles.containerBtn}>
@@ -65,14 +65,13 @@ export default class LinksScreen extends React.Component {
               Alert.alert(' Button Long Pressed')
             }}
             onPress={() => { }}
-            //Here is the trick
             activeOpacity={0.6}
             style={styles.button}>
             <Text style={styles.TextStyle}>Long press me</Text>
           </TouchableOpacity>
         </View>
-        <Draggable renderSize={56} renderColor='black' offsetX={-100} offsetY={100} renderText='A' />
-        <Draggable reverse={false} renderColor='red' renderShape='square' offsetX={0} offsetY={0} renderText='B' />
+        <Draggable renderSize={56} renderColor='black' offsetX={-100} offsetY={100} renderText='Fixed' />
+        <Draggable reverse={false} renderColor='red' renderShape='square' offsetX={0} offsetY={0} renderText='Free' />
         <GestureRecognizer
           onSwipe={(direction, state) => this.onSwipe(direction, state)}
           onSwipeUp={(state) => this.onSwipeUp(state)}
@@ -81,11 +80,14 @@ export default class LinksScreen extends React.Component {
           onSwipeRight={(state) => this.onSwipeRight(state)}
           config={config}
           style={{
-            flex: 1,
-            backgroundColor: this.state.backgroundColor
+            height: 60,
+            backgroundColor: this.state.backgroundColor,
+            borderWidth: 1,
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
         >
-          <Text>{this.state.myText}</Text>
+          <Text style={{ fontWeight: 'bold' }}>{this.state.myText}</Text>
         </GestureRecognizer>
       </View>
     );

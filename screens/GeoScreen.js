@@ -3,6 +3,9 @@ import { Platform, Text, View, StyleSheet } from 'react-native';
 import { Constants, Location, Permissions, MapView } from 'expo';
 
 export default class App extends Component {
+  static navigationOptions = {
+    title: 'GPS',
+  };
   state = {
     location: null,
     errorMessage: null,

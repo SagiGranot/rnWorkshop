@@ -4,6 +4,9 @@ import { Accelerometer } from 'expo';
 
 export default class AccelerometerSensor extends React.Component {
   static navigationOptions = {
+    title: 'Accelometer',
+  };
+  static navigationOptions = {
     header: null,
   };
 
