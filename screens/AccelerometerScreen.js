@@ -6,9 +6,6 @@ export default class AccelerometerSensor extends React.Component {
   static navigationOptions = {
     title: 'Accelometer',
   };
-  static navigationOptions = {
-    header: null,
-  };
 
   state = {
     accelerometerData: {},

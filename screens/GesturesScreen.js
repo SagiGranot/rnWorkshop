@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Alert, Text } from 'react-native';
+import { View, StyleSheet, TouchableHighlight, Alert, Text } from 'react-native';
 import Draggable from 'react-native-draggable';
 import GestureRecognizer, { swipeDirections } from 'react-native-swipe-gestures';
 
@@ -51,7 +51,13 @@ export default class LinksScreen extends React.Component {
     }
   }
 
+  _onPressButton() {
+    Alert.alert('You tapped the button!')
+  }
 
+  _onLongPressButton() {
+    Alert.alert('You long-pressed the button!')
+  }
   render() {
     const config = {
       velocityThreshold: 0.3,
@@ -60,15 +66,11 @@ export default class LinksScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.containerBtn}>
-          <TouchableOpacity
-            onLongPress={() => {
-              Alert.alert(' Button Long Pressed')
-            }}
-            onPress={() => { }}
-            activeOpacity={0.6}
-            style={styles.button}>
-            <Text style={styles.TextStyle}>Long press me</Text>
-          </TouchableOpacity>
+          <TouchableHighlight onPress={this._onPressButton} onLongPress={this._onLongPressButton} underlayColor="white">
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Touchable with Long Press</Text>
+            </View>
+          </TouchableHighlight>
         </View>
         <Draggable renderSize={56} renderColor='black' offsetX={-100} offsetY={100} renderText='Fixed' />
         <Draggable reverse={false} renderColor='red' renderShape='square' offsetX={0} offsetY={0} renderText='Free' />
@@ -114,5 +116,16 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
     fontSize: 16,
+  },
+
+  button: {
+    marginBottom: 30,
+    width: 260,
+    alignItems: 'center',
+    backgroundColor: '#2196F3'
+  },
+  buttonText: {
+    padding: 20,
+    color: 'white'
   }
 });
